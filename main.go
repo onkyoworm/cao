@@ -87,8 +87,8 @@ func registerNewRenter(stub shim.ChaincodeStubInterface, street string, number s
 	}
 
 	block.renters = append(block.renters, renter)
-	iterator, _ := stub.GetHistoryForKey(key)
-	data, _ := iterator.Next()
+	//iterator, _ := stub.GetHistoryForKey(key)
+	//data, _ := iterator.Next()
 	block_marshalled, _ := json.Marshal(*block)
 	err = stub.PutState(id, block_marshalled)
 	if err != nil {
