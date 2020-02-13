@@ -44,6 +44,8 @@ func getBlock(stub shim.ChaincodeStubInterface, key string) (*Block, error) {
 //save a block on the ledger
 func putBlock(stub shim.ChaincodeStubInterface, key string, block *Block) error {
 	block_marshalled, _ := json.Marshal(*block)
+	iterator, _ := stub.GetHistoryForKey("key")
+	data, _ := iterator.Next()
 	return stub.PutState(key, block_marshalled)
 }
 
